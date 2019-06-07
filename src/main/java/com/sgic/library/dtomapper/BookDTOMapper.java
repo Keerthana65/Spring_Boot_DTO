@@ -2,7 +2,6 @@ package com.sgic.library.dtomapper;
 
 import java.lang.reflect.Type;
 import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.modelmapper.TypeToken;
@@ -15,19 +14,19 @@ import com.sgic.library.service.BookService;
 @Service
 public class BookDTOMapper {
 
-	@SuppressWarnings("unused")
 	@Autowired
 	private BookService bookService;
 	
 	ModelMapper modelMapper = new ModelMapper();
-	
-
-	PropertyMap <BookDTO, Book> bookMap = new PropertyMap <BookDTO, Book>() {
-		  protected void configure() {
-			
-		  }
-		};
 		
+	PropertyMap<BookDTO, Book> bookMap = new PropertyMap<BookDTO, Book>() {
+		protected void configure() {
+			map().getSubClassification().setSubClassificationId(source.getSubClassificationId());
+			
+		}
+		
+	};
+	
 	@SuppressWarnings("unused")
 	private BookDTOMapper EntityToDTO(Book book) {
 		BookDTOMapper bookDTO = modelMapper.map(book, BookDTOMapper.class);
@@ -44,8 +43,8 @@ public class BookDTOMapper {
     public List<BookDTO> getAllBook(){
     	List<Book> book = bookService.listBook();
     	Type listType = new TypeToken<List<BookDTO>>() {}.getType();
-    	List<BookDTO> getsubList = new ModelMapper().map(book, listType);
-		return getsubList;
+    	List<BookDTO> getbookList = new ModelMapper().map(book, listType);
+		return getbookList;
     	
     }
 

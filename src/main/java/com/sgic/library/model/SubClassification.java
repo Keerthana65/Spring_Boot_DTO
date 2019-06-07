@@ -26,15 +26,15 @@ public class SubClassification implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="classification_id", nullable=false)
-	private Classification classificationId;
+	private Classification classification;
 	
 
-	public Classification getClassificationId() {
-		return classificationId;
+	public Classification getClassification() {
+		return classification;
 	}
 
-	public void setClassificationId(Classification classificationId) {
-		this.classificationId = classificationId;
+	public void setClassification(Classification classification) {
+		this.classification = classification;
 	}
 
 	public long getSubClassificationId() {

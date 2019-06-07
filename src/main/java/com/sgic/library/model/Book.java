@@ -26,15 +26,19 @@ public class Book implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="subClassification_id")
-	private SubClassification subClassificationId;
+	private SubClassification subClassification;
 	
-	
-	public SubClassification getSubClassificationId() {
-		return subClassificationId;
+
+	public SubClassification getSubClassification() {
+		return subClassification;
 	}
 
-	public void setSubClassificationId(SubClassification subClassificationId) {
-		this.subClassificationId = subClassificationId;
+	public void setSubClassification(SubClassification subClassification) {
+		this.subClassification = subClassification;
+	}
+
+	public void setBookId(long bookId) {
+		this.bookId = bookId;
 	}
 
 	public long getBookId() {
